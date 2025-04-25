@@ -121,6 +121,7 @@ p{
 }
 .colunm3 h2{
     text-align: center;
+    text-decoration: none;
 }
 .colunm4{
     flex-basis: 25%;
