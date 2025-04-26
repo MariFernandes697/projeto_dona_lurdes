@@ -119,6 +119,10 @@ p{
 .colunm3:hover{
     transform: scale(1.2);
 }
+.colunm3 a{
+    text-decoration: none;
+    color: #1C150A;
+}
 .colunm3 h2{
     text-align: center;
 }
