@@ -48,3 +48,26 @@
 .paginacao span:hover{
     background: var(--color02);
 }
+.ver-produto{
+    margin-top: 40px;
+
+}
+.ver-produto .colunm img{
+    width: 100%;
+    padding: 0;
+}
+.ver-produto #produtoImg{
+    width: 600px;
+    height: 450px;
+    object-fit: cover;
+    object-position: top;
+
+}
+.ver-produto .colunm{
+    padding: 20px;
+}
+.ver-produto h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bolder;
+}
