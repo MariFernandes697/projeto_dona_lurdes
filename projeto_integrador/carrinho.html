@@ -6,6 +6,7 @@
     <title>Plataforma de Vendas Armazém do Sítio</title>
     <link rel="stylesheet" href="loja_dona_lurdes/css/style.css">
     <link rel="stylesheet" href="loja_dona_lurdes_produtos/css/style.css">
+    <link rel="stylesheet" href="loja_dona_lurdes_produtos/css/carrinho.css">
 </head>
 <body>
     <!--Início-->
@@ -36,95 +37,101 @@
             
             </div>
             <!--Fim-Navegação do Site-->
-
-
        
         <!--Fim-Container-->
         <!--Fim-Banner-->
     </div>
-
-<!--Produtos detalhes-->
-    <div class="corpo-categorias ver-produto">
-        <div class="linha">
-            <div class="colunm">
-                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_abobora.png"  width="100%"   alt="" id="produtoImg">
-
-                <div class="img-linha">
-                    <div class="img-colunm">
-                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_laranja.png" width="100%"  alt="" class="miniatura-do-produto">
-                
-                    </div>
-                    <div class="img-colunm">
-                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_mamao.png"  width="100%" alt="" class="miniatura-do-produto">
-                
-                    </div>
-                    <div class="img-colunm">
-                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_amora.png"  width="100%"  alt="" class="miniatura-do-produto">
-                
-                    </div>
-                </div>
-                 
-            </div>
-
-            <div class="colunm">
-                <p>Doce de abóbora Caseiro 500g</p>
-                <h1>Anne</h1>
-                <h4>R$ 23,50</h4>
-                <form action=""  method="post">
-                    <select name="" id="">
-                        <option value="">Quantidade</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-                    <button type="submit"  class="botao">Adicionar ao Carrinho</button>
-                </form>
+        <!--Carrinho de Compras-->
+        <div class="corpo-categorias carrinho-de-compras" >
+            <!--Tabela Carrinho de Compras-->
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="carrinho-info">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/bolacha.jpg" alt="">
+                            <div>
+                                <p>efmjigh43g</p>
+                                <small>valor: R$54</small>
+                                <br>
+                                <a href="" title="">Remover</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="number" name="" id="" value="1">
+                        </form></td>
+                    <td>R$45,00</td>
+                    
+                </tr>
+                <tr>
         
+                </tr>
+                <tr>
+                    <td>
+                        <div class="carrinho-info">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_abobora.png" alt="">
+                            <div>
+                                <p>efmjigh43g</p>
+                                <small>valor: R$54</small>
+                                <br>
+                                <a href="" title="">Remover</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="number" name="" id="" value=" 1">
+                        </form></td>
+                    <td>R$45,00</td>
+                    
+                </tr>
 
-
+                <tr>
+                    <td>
+                        <div class="carrinho-info">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_figo.png" alt="">
+                            <div>
+                                <p>efmjigh43g</p>
+                                <small>valor: R$54</small>
+                                <br>
+                                <a href="" title="">Remover</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="number" name="" id="" value=" 1">
+                        </form></td>
+                    <td>R$45,00</td>
+                    
+                </tr>
+            </table>
+            <div class="valor-total">
+                <table>
+                    <tr>
+                        <td>Sub-Total</td>
+                        <td>40,00</td>
+                    </tr>
+                    <tr>
+                        <td>Frete</td>
+                        <td>5,00</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>45,00</td>
+                    </tr>
+                </table>
             </div>
+            <!--Fim Tabela Carrinho de Compras-->
         </div>
-    </div>
+        <!--Fim- Carrinho de Compras-->
 
-
-
-<!-- Fim-Produtos detalhes-->
-<div class="corpo-categorias">
-    <div class="linha linha2">
-        <h2>Produtos relacionados</h2>
-        <p>Veja mais</p>
-        
-    </div>
-</div>
-
-        <!--Destaque-Produtos-->
-        <div class="corpo_categorias">
-            <div class="linha">
-                <!--Produtos-->
-                <div class="colunm4">
-                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" alt="" width="200px" height="200px">
-                    <h4>Pote de Mel Artesanal</h4>
-                    <p>R$ 14,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/geleia.png" alt="" width="200px" height="200px">
-                    <h4>Geleia de frutas</h4>
-                    <p>R$ 20,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/queijo_caseiro.png" alt="" width="200px" height="200px">
-                    <h4>Queijo Caseiro</h4>
-                    <p>R$ 45,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/bolacha.jpg" alt="" width="200px" height="200px">
-                    <h4>Bolachas de Nata</h4>
-                    <p>R$ 8,90</p>
-                </div>
-                        <!--Fim-Produtos-->
-            </div>
-        </div>
         <!--Rodapé-->
         <footer class="rodape">
             <div class="container">
