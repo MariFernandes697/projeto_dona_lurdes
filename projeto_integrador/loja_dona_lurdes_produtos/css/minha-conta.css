@@ -1,0 +1,33 @@
+:root{
+    --color01: #FFE9A3; 
+    --color02: #A4C994;
+    --color03: #634A1A; 
+    --color04: #452409;
+    --color05: #1C150A; 
+    }
+body{
+    background: radial-gradient(var(--color02),#fff);
+}
+.minha-conta{
+    padding: 50px 0;
+    
+}
+.formulario{
+    position: relative;
+    padding: 200px 0;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 30px 0 20px 0 rgba(0,0, 0, 0,1);
+    overflow: hidden;
+}
+.formulario span{
+    display: inline-block;
+    width: 100px;
+    padding: 0 10px;
+    font-weight: bold;
+    color: #1C150A;
+    cursor: pointer;
+}
