@@ -49,11 +49,23 @@ body{
     border: 1px solid var(--color05);
     border: 3px;
 }
-.formulario form .botao-formulario{
+.formulario form .botao{
     width: 100%;
     margin: 10px 0;
     border: none;
     border-radius: 4px;
     background-color: var(--color05);
     cursor: pointer;
+}
+.formulario form .botao:hover{
+    background-color: #FFE9A3;
+}
+.formulario form a{
+    font-size: 12px;
+    text-decoration:none;
+    color: var(--color05);
+    cursor: pointer;
+}
+#EntrarPainel{
+    left: -300px;
 }
