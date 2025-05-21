@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Vendas Armazém do Sítio</title>
+    <link rel="stylesheet" href="loja_dona_lurdes/css/style.css">
+</head>
+<body>
+    <!--Início-->
+    <!--Banner-->
+    <div class="banner">
+        <!--Container-->
+        <div class="container">
+            <!--Navegação do Site-->
+            <div class="navbar">
+
+               <div class="logo">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png" alt="Logo Dona Lurdes" width="110px" height="100px">
+               </div>
+
+               <!--Menu-->
+               <nav>
+                <ul id="MenuItens">
+                    <li><a href="index.html" title="">Início</a></li>
+                    <li><a href="produtos.html" title="">Produtos</a></li>
+                    <li><a href="contatos.html" title="">Contato</a></li>
+                    <li><a href="minha_conta.html" title="">Minha Conta</a></li>
+                </ul>
+               </nav>
+
+                <a href="carrinho.html" title=""><img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/carrinho-de_compras.png" alt="" width="60px" height="60px"></a>
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/menu.png" alt="" class="menu-celular" onclick="menucelular()">
+               <!--Fim-Menu-->
+            
+            </div>
+            <!--Fim-Navegação do Site-->
+
+
+       
+                <div class="linha">
+
+                    <div class="colunm">
+                        <h1>Armazém de Produtos Artesanais e Hortifruti<br> da Dona Lourdes.<br> Seja Bem Vindo!</h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br> Lorem Ipsum has been the industry's standard dummy text ever since the</p>
+                        <br><br><a href="" class="botao">Mais informações &#8594 </a>
+                    </div>
+
+                    <div class="colunm">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logoDonaLurdes.png" alt="">
+                    </div>
+
+                </div>
+         
+        </div>
+        <!--Fim-Container-->
+        <!--Fim-Banner-->
+    </div>
+
+        <!--Destaque-Categorias-->
+            <div class="categorias">
+                <!--Categorias-corpo-->
+                <div class="corpo-categorias">
+                    <!--linha-categoria-->
+                    <div class="linha">
+
+                        <div class="colunm3">
+                            <a href="produtos_artesanais.html">
+                                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/categoria_produtos_artesanais.png" alt="">
+                                <h2>Produtos Artesanais</h2>
+                            </a>
+                        </div>
+                        
+                        <div class="colunm3">
+                            <a href="hortifruti.html">
+                                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/categoria_hortifruti.png" alt="">
+                                <h2>Hortifruti</h2>
+   
+                            </a>
+                        </div>
+
+                    </div>
+                    <!--fim-linha-categoria-->
+                    
+                </div>
+                <!--Fim-Categorias-corpo-->
+            </div>
+
+
+
+
+        <!--Fim-Destaque-Categorias-->
+        <!--Destaque-Produtos-->
+        <div class="corpo_categorias">
+
+            <h2 class="titulo">Produtos mais vendidos</h2>
+            <div class="linha">
+                <!--Produtos-->
+                <div class="colunm4">
+                    <a href="ver_produto.html" title="">
+                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" alt="" width="200px" height="200px"></a>
+                    <h4>Pote de Mel Artesanal</h4>
+                    <p>R$ 14,90</p>
+                </div>
+                <div class="colunm4">
+                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/geleia.png" alt="" width="200px" height="200px">
+                    <h4>Geleia de frutas</h4>
+                    <p>R$ 20,90</p>
+                </div>
+                <div class="colunm4">
+                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/queijo_caseiro.png" alt="" width="200px" height="200px">
+                    <h4>Queijo Caseiro</h4>
+                    <p>R$ 45,90</p>
+                </div>
+                <div class="colunm4">
+                    <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/bolacha.jpg" alt="" width="200px" height="200px">
+                    <h4>Bolachas de Nata</h4>
+                    <p>R$ 8,90</p>
+                </div>
+                <!--Fim-Produtos-->
+            </div>
+        </div>
+
+        <!--Novidades-->
+        <h2 class="titulo">--Novidades--</h2>
+        <div class="linha">
+
+            <!--Produtos-->
+            <div class="colunm4">
+              
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Barrinha-de-Cereal.jpg" alt="" width="200px" height="200px">
+                <h4>Barrinha de Cereal</h4>
+                <p>R$ 11,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Geleia-de-Pimenta-cozinharoman-ig1-min.jpg" alt="" width="200px" height="200px">
+                <h4>Geleia de Pimentas</h4>
+                <p>R$ 19,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/paoArtenasal.jpg" alt="" width="200px" height="200px">
+                <h4>Pão Artesanal</h4>
+                <p>R$ 29,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/queijos-azuis.jpg" alt="" width="200px" height="200px">
+                <h4>Queijos Azuis</h4>
+                <p>R$ 51,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/sequilhos.webp" alt="" width="200px" height="200px">
+                <h4>Sequilhos</h4>
+                <p>R$ 10,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/oleaginosas.jpg" alt="" width="200px" height="200px">
+                <h4>oleaginosas</h4>
+                <p>R$ 8,90</p>
+            </div>
+            <div class="colunm4">
+                <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Frutas-Vermelhas.png" alt="" width="200px" height="200px">
+                <h4> Torta Frutas Vermelhas</h4>
+                <p>R$ 8,90 Kg</p>
+            </div>
+            <!--Fim-Produtos-->
+        </div>
+        <!--Fim-Novidades-->
+
+        <div class="ofertas">
+            <div class="corpo_categorias">
+                <div class="linha">
+                    <div class="colunm">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/banner-2.png" alt="" class="ofertas-img" width="400px" height="400px">
+                    </div>
+                    <div class="colunm">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <h1>Lorem Ipsum</h1>
+                        <small>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Quos, sit dicta alias nam possimus omnis fugit dolores,
+                             quae deleniti laudantium ex eum quo quis soluta totam dolor dolorem neque corporis.
+                        </small>
+                        <br><br><a href="" class="botao">Comprar agora &#8594;</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Fim-Destaque-Produtos-->
+
+        <!--Marcas-->
+        <div class="marcas">
+            <div class="corpo-categorias">
+                <div class="linha">
+
+                    <div class="colunm5">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_parana.png" alt="">
+                    </div>
+                    <div class="colunm5">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_uepg.png" alt="">
+                    </div>
+                    <div class="colunm5">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_talento_tech.png" alt="">
+                    </div>
+                    <div class="colunm5">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_fundacao_araucaria.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fim-Marcas-->
+
+        <!--Rodapé-->
+        <footer class="rodape">
+            <div class="container">
+                <div class="linha">
+                    <div class="rodape-colunm1">
+                        <h3>App Disponível</h3>
+                        <p>Baixe o nosso aplicativo nas plataformas:</p>
+                        <div class="logo-app">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/google.png" alt="">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/apple.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="rodape-colunm2">
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png" alt="">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+
+                    <div class="rodape-colunm3">
+                        <h3>Mais informações</h3>
+                      <ul>
+                        <li>Cupons</li>
+                        <li>Blog</li>
+                        <li>Politíca de Privacidade</li>
+                        <li>Contatos</li>
+                      </ul>
+                    </div>
+
+                    <div class="rodape-colunm4">
+                        <h3>Redes Sociais</h3>
+                      <ul>
+                        <li>Facebook</li>
+                        <li>Instagram</li>
+                        <li>LinkedIn</li>
+                      </ul>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="direitos">
+                &#169; Todos os direitos reservados
+            </p>
+        </footer>
+        <!--Fim-Rodapé-->
+
+
+    <!--Fim-->
+
+    <script  type = "módulo"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
+    <script  nomodule  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" ></script>
+    <script  src="loja_dona_lurdes/js/app.js"></script>
+</body>
+</html>
