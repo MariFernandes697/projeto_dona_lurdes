@@ -12,7 +12,9 @@
 --color04: #452409;
 --color05: #1C150A; 
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     font-family: 'Poppins', sans-serif;
     background-color:#fff;
@@ -143,6 +145,8 @@ p{
     object-position: center;
 
 }
+
+
 .titulo{
     position: relative;
     line-height: 60px;
@@ -169,14 +173,6 @@ h4{
     font-size: 14px;
 }
 
-.ofertas{
-    background: radial-gradient(var(--color02),#fff);
-    margin-top: 80px;
-    padding: 30px 0;
-}
-.colunm .ofertas{
-    padding: 50px;
-}
 small{
     color: #1C150A;
 }
