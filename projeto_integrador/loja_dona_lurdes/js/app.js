@@ -4,14 +4,14 @@ MenuItens.style.maxHeight = "0px";
 
 function menucelular(){
     if(MenuItens.style.maxHeight == "0px"){
-        MenuItens.style.maxHeight ="200px";
-    }
-    else{
+        MenuItens.style.maxHeight = MenuItens.scrollHeight + "px";
+    } else {
         MenuItens.style.maxHeight = "0px";
     }
 }
+
 var produtoImg = document.getElementById("produtoImg");
-var produtoMiniatura = document.getElementsByClassName("miniatura-do-produto");7
+var produtoMiniatura = document.getElementsByClassName("miniatura-do-produto");
 
 produtoMiniatura[0].onclick = function(){
     produtoImg.src = produtoMiniatura[0].src;
