@@ -59,20 +59,25 @@ if (isset($_GET['id'])) {
             <h4>R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></h4>
             <p><?php echo $produto['descricao']; ?></p>
 
-                <form action="adicionar_carrinho.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
-                <input type="hidden" name="nome" value="<?php echo $produto['nome']; ?>">
-                <input type="hidden" name="preco" value="<?php echo $produto['preco']; ?>">
+             <form action="adicionar-carrinho.php" method="post">
+                <input type="hidden" name="id" value="<?= $produto['id'] ?>">
+                <input type="hidden" name="nome" value="<?= $produto['nome'] ?>">
+                <input type="hidden" name="preco" value="<?= $produto['preco'] ?>">
+                <input type="hidden" name="imagem" value="<?= $produto['imagem'] ?>">
+                
                 <label for="quantidade">Quantidade:</label>
                 <select name="quantidade" id="quantidade">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
+
                 <button type="submit" class="botao">Adicionar ao Carrinho</button>
             </form>
 
-        
+
+                    
 
 
             </div>
