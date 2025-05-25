@@ -109,3 +109,17 @@ html{
 .ver-produto .botao:hover {
     background-color: #870000;
 }
+.botao-vermais {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.botao-vermais:hover {
+    background-color: #45a049;
+}

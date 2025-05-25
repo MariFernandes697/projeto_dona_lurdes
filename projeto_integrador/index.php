@@ -56,7 +56,7 @@
             <div class="linha">
                 <!--Produtos-->
                 <div class="colunm4">
-                    <a href="ver_produto.html" title="">
+                    <a href="projeto_integrador/ver-produto.php" title="">
                     <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" alt="" width="200px" height="200px"></a>
                     <h4>Pote de Mel Artesanal</h4>
                     <p>R$ 14,90</p>

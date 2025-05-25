@@ -1,6 +1,11 @@
 <?php
- require_once('includes/header-carrinho.php')
+ require_once('includes/header-carrinho.php');
+session_start();
+
 ?>
+<pre>
+<?php print_r($_SESSION['carrinho'] ?? []); ?>
+</pre>
 <!--Carrinho de Compras-->
         <div class="corpo-categorias carrinho-de-compras" >
             <!--Tabela Carrinho de Compras-->
