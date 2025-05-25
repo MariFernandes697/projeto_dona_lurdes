@@ -1,0 +1,58 @@
+/* estilo-admin.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-login {
+    background-color: #fffaf0;
+    border: 2px solid #f0d9b5;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+}
+
+.container-login h2 {
+    margin-bottom: 25px;
+    color: #8c5e36;
+}
+
+.container-login label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #4a2d14;
+    font-weight: bold;
+}
+
+.container-login input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d8c6aa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.container-login button {
+    background-color: #8c5e36;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container-login button:hover {
+    background-color: #a76f46;
+}
