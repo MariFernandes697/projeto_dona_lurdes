@@ -73,7 +73,8 @@ require_once('includes/header-carrinho.php');
 
         </table>
         <div class="botao-final">
-            <a class="botao-finalizar" href="checkout.php">Finalizar Compra</a>
+            <a class="botao-finalizar" href="funcionalidades/confirmar-pedido.php">Finalizar Compra</a>
+
         </div>
     </div>
 </div>

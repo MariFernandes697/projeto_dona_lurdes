@@ -1,0 +1,125 @@
+/* confirmar-pedido.css */
+:root{
+    --color01: #FFE9A3; 
+    --color02: #A4C994;
+    --color03: #634A1A; 
+    --color04: #452409;
+    --color05: #1C150A; 
+    }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #fffaf0;
+    border: 1px solid var(--color03);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.container h2 {
+    text-align: center;
+    color: var(--color05);
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid var(--color05);
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--color02);
+    color: #4a2d14;
+}
+
+td {
+    color: #5a3e2b;
+}
+
+strong {
+    color: #4a2d14;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color04);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #a76f46;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    color: #8c5e36;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin: 30px 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none; /* Esconde o cabeçalho da tabela */
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #f0d9b5;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    td {
+        text-align: left;
+        padding: 8px 10px;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        color: #b84dd8;
+    }
+}

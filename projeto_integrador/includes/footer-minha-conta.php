@@ -1,4 +1,6 @@
-<!--Rodapé-->
+<!--Fim Minha Conta-->
+
+        <!--Rodapé-->
         <footer class="rodape" id="contato">
             <div class="container">
                 <div class="linha">
@@ -6,14 +8,14 @@
                         <h3>App Disponível</h3>
                         <p>Baixe o nosso aplicativo nas plataformas:</p>
                         <div class="logo-app">
-                            <img src="../html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/google.png" alt="">
-                            <img src="../html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/apple.png" alt="">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/google.png" alt="">
+                            <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/apple.png" alt="">
                         </div>
                     </div>
 
                     <div class="rodape-colunm2">
-                        <img src="../html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png" alt="">
-                        <p>Aproveite e adquira nossos produtos fresquinhos, entregues com comodidade diretamente na sua casa!</p>
+                        <img src="loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo-2.png" alt="">
+                         <p>Aproveite e adquira nossos produtos fresquinhos, entregues com comodidade diretamente na sua casa!</p>
                     </div>
 
                     <div class="rodape-colunm3">
@@ -49,6 +51,19 @@
 
     <script  type = "módulo"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
     <script  nomodule  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" ></script>
-    <script  src="../html/loja_dona_lurdes/js/app.js"></script>
+    <script  src="html/loja_dona_lurdes/js/login.js"></script>
+    <script>
+function gerarSenha() {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=';
+    let senha = '';
+    for (let i = 0; i < 12; i++) {
+        senha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    const campoSenha = document.getElementById('senhaCadastro');
+    campoSenha.value = senha;
+    alert("Senha sugerida: " + senha);
+}
+</script>
+
 </body>
 </html>
