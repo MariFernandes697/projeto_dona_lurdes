@@ -42,7 +42,7 @@ table {
 }
 
 th, td {
-    border: 1px solid var(--color05);
+    border: 1px solid var(--color02);
     padding: 12px;
     text-align: center;
 }

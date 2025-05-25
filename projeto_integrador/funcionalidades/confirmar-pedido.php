@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once '../listar/conexao.php';
@@ -27,7 +26,49 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
 <head>
     <meta charset="UTF-8">
     <title>Confirmação do Pedido</title>
-    <link rel="stylesheet" href="confirmar-pedido.css?v=2"> 
+    <link rel="stylesheet" href="confirmar-pedido.css?v=3">
+    <style>
+        .form-pagamento {
+            margin-top: 30px;
+        }
+        .form-pagamento label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4a2d14;
+        }
+        .form-pagamento input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d8c6aa;
+            border-radius: 6px;
+        }
+        .form-pagamento .metodo {
+            margin-bottom: 20px;
+        }
+        .pagamento-opcoes {
+            display: flex;
+            gap: 20px;
+        }
+        .cartao-info, .pix-info {
+            flex: 1;
+            background-color: #fffaf0;
+            padding: 15px;
+            border: 1px solid #f0d9b5;
+            border-radius: 10px;
+        }
+        .icon-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .icon-label img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -51,27 +92,145 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
                     $preco = $item['preco'];
                     $subtotal = $quantidade * $preco;
                     $total += $subtotal;
-                    echo "<tr>
-                        <td data-label='Produto'>$nome</td>
-                        <td data-label='Quantidade'>$quantidade</td>
-                        <td data-label='Subtotal'>R$ " . number_format($subtotal, 2, ',', '.') . "</td>
-                    </tr>";
-
+                    echo "<tr><td>$nome</td><td>$quantidade</td><td>R$ ".number_format($subtotal, 2, ',', '.')."</td></tr>";
                 }
                 ?>
                 <tr>
-                    <td colspan='2' data-label='Total'><strong>Total</strong></td>
-                    <td data-label='Total'><strong>R$ <?= number_format($total, 2, ',', '.') ?></strong></td>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td><strong>R$ <?= number_format($total, 2, ',', '.') ?></strong></td>
                 </tr>
-
             </tbody>
         </table>
 
-        <form action="../finalizar-pedido.php" method="POST">
-            <button type="submit" name="confirmar">Confirmar e Finalizar</button>
+        <form id="formPagamento" class="form-pagamento" action="../finalizar-pedido.php" method="POST">
+            <div class="metodo">
+                <label><input type="radio" name="metodo_pagamento" value="cartao" checked> Cartão de Crédito</label>
+                <label><input type="radio" name="metodo_pagamento" value="pix"> PIX</label>
+                <label><input type="radio" name="metodo_pagamento" value="mercado_pago"> Mercado Pago</label>
+                 <label>
+                    <input type="radio" name="metodo_pagamento" value="presencial">
+                    <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Pagamento Presencial" width="20">
+
+                    Pagamento Presencial
+                </label>
+               
+            </div>
+
+            <div class="pagamento-opcoes">
+                <div class="cartao-info">
+                    <div class="icon-label">
+                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/credit-card.svg" alt="Cartão"> Cartão de Crédito
+                    </div>
+                    <label for="nome_titular">Nome no Cartão</label>
+                    <input type="text" name="nome_titular" id="nome_titular" required>
+
+                    <label for="numero_cartao">Número do Cartão</label>
+                    <input type="text" name="numero_cartao" id="numero_cartao" required>
+
+                    <label for="validade">Validade</label>
+                    <input type="text" name="validade" id="validade" placeholder="MM/AA" required>
+
+                    <label for="cvv">CVV</label>
+                    <input type="text" name="cvv" id="cvv" required>
+                </div>
+
+            <div class="pix-info" style="display: none;">
+                <label>Sua chave PIX para pagamento:</label>
+                <input type="text" id="chave_pix" value="00020126450014BR.GOV.BCB.PIX0123chave pix alphanumerica5204000053039865802BR5911Dona Lurdes6008Loada-PR62070503***6304EFBC" readonly>
+                <button type="button" onclick="copiarPix()">Copiar</button>
+
+                <div style="margin-top: 20px;">
+                    <p>Ou escaneie o QR Code abaixo:</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dona.lurdes@armazem.com.br" alt="QR Code PIX">
+                </div>
+            </div>
+
+
+<script>
+function copiarPix() {
+    const input = document.getElementById("chave_pix");
+    input.select();
+    input.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Chave PIX copiada com sucesso!");
+}
+</script>
+
+
+            </div>
+
+            <button type="submit" class="botao-confirmar">Confirmar e Pagar</button>
         </form>
 
         <br>
         <a href="../carrinho.php">Voltar ao carrinho</a>
     </div>
 
+   <script>
+    function mostrarCampos(metodo) {
+        const cartao = document.querySelector('.cartao-info');
+        const pix = document.querySelector('.pix-info');
+        
+        cartao.style.display = (metodo === 'cartao') ? 'block' : 'none';
+        pix.style.display = (metodo === 'pix') ? 'block' : 'none';
+
+        // Para os outros, esconde tudo
+        if (metodo !== 'cartao' && metodo !== 'pix') {
+            cartao.style.display = 'none';
+            pix.style.display = 'none';
+        }
+    }
+
+    document.querySelectorAll('input[name="metodo_pagamento"]').forEach(el => {
+        el.addEventListener('change', () => {
+            mostrarCampos(el.value);
+        });
+    });
+
+    // Mostrar o campo certo ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        const metodoSelecionado = document.querySelector('input[name="metodo_pagamento"]:checked').value;
+        mostrarCampos(metodoSelecionado);
+    });
+</script>
+<script>
+document.getElementById("formPagamento").addEventListener("submit", function(e) {
+    const metodo = document.querySelector('input[name="metodo_pagamento"]:checked').value;
+
+    if (metodo === "cartao") {
+        const nome = document.getElementById("nome_titular").value.trim();
+        const numero = document.getElementById("numero_cartao").value.trim();
+        const validade = document.getElementById("validade").value.trim();
+        const cvv = document.getElementById("cvv").value.trim();
+
+        const erros = [];
+
+        if (nome === "") erros.push("O nome do titular é obrigatório.");
+
+        if (!/^\d{16}$/.test(numero)) erros.push("O número do cartão deve ter 16 dígitos.");
+
+        if (!/^\d{2}\/\d{2}$/.test(validade)) {
+            erros.push("A validade deve estar no formato MM/AA.");
+        } else {
+            const [mes, ano] = validade.split("/").map(Number);
+            const dataAtual = new Date();
+            const anoAtual = parseInt(dataAtual.getFullYear().toString().slice(-2));
+            const mesAtual = dataAtual.getMonth() + 1;
+
+            if (mes < 1 || mes > 12 || ano < anoAtual || (ano === anoAtual && mes < mesAtual)) {
+                erros.push("A validade do cartão está vencida.");
+            }
+        }
+
+        if (!/^\d{3,4}$/.test(cvv)) erros.push("O CVV deve ter 3 ou 4 dígitos.");
+
+        if (erros.length > 0) {
+            e.preventDefault();
+            alert("Erros encontrados:\n\n" + erros.join("\n"));
+        }
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,47 +1,84 @@
 <?php
 session_start();
-require_once 'listar/conexao.php'; 
+require_once 'listar/conexao.php'; // ou o caminho correto
 
-// Se o usuário não estiver logado, redireciona pra minha-conta.php
-if (!isset($_SESSION['usuario_id'])) {
-    header('Location: minha-conta.php?redirect=finalizar-pedido.php');
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $metodo = $_POST['metodo_pagamento'] ?? '';
 
+    if ($metodo === 'cartao') {
+    $nome = trim($_POST['nome_titular'] ?? '');
+    $numero = preg_replace('/\D/', '', $_POST['numero_cartao'] ?? '');
+    $validade = trim($_POST['validade'] ?? '');
+    $cvv = trim($_POST['cvv'] ?? '');
 
-if (!isset($_SESSION['carrinho']) || count($_SESSION['carrinho']) === 0) {
-    echo "Carrinho vazio!";
-    exit;
-}
+    $erros = [];
 
-// Simulando usuário 
-$usuario_id = $_SESSION['usuario_id'] ?? null;
-if (!$usuario_id) {
-    echo "Você precisa estar logado para finalizar o pedido.";
-    exit;
-}
-$data_pedido = date('Y-m-d H:i:s');
+    if (empty($nome)) $erros[] = "Nome do titular é obrigatório.";
 
-// 1. Inserir pedido
-$sql_pedido = "INSERT INTO pedidos (usuario_id, data_pedido) VALUES ($usuario_id, '$data_pedido')";
-if (mysqli_query($conexao, $sql_pedido)) {
-    $pedido_id = mysqli_insert_id($conexao);
+    if (!preg_match('/^\d{16}$/', $numero)) $erros[] = "Número do cartão inválido.";
 
-    // 2. Inserir itens do pedido
-    foreach ($_SESSION['carrinho'] as $produto_id => $item) {
-        $quantidade = $item['quantidade'];
+    if (!preg_match('/^\d{2}\/\d{2}$/', $validade)) {
+        $erros[] = "Formato da validade inválido (use MM/AA).";
+    } else {
+        [$mes, $ano] = explode('/', $validade);
+        $mes = (int)$mes;
+        $ano = (int)$ano + 2000;
+        $agora = new DateTime();
+        $validadeData = DateTime::createFromFormat('Y-m', "$ano-$mes");
 
-        $sql_item = "INSERT INTO itens_pedido (pedido_id, produto_id, quantidade) 
-                     VALUES ($pedido_id, $produto_id, $quantidade)";
-        mysqli_query($conexao, $sql_item);
+        if ($mes < 1 || $mes > 12 || $validadeData < $agora) {
+            $erros[] = "Data de validade expirada.";
+        }
     }
 
-    // 3. Limpar o carrinho
-    unset($_SESSION['carrinho']);
-    
-    echo "<h2>Pedido realizado com sucesso! Pedido #$pedido_id</h2>";
-    echo "<a href='index.php'>Voltar para a loja</a>";
+    if (!preg_match('/^\d{3,4}$/', $cvv)) $erros[] = "CVV inválido.";
+
+    if (!empty($erros)) {
+        echo "<h3>Erros no pagamento:</h3><ul>";
+        foreach ($erros as $erro) {
+            echo "<li>$erro</li>";
+        }
+        echo "</ul><a href='javascript:history.back()'>Voltar</a>";
+        exit;
+    }
+}
+
+
+    // Aqui entra o switch
+    switch ($metodo) {
+        case 'cartao':
+            // Aqui você pode pegar os dados do cartão e salvar no banco (simulado)
+            // Por segurança, você não deve salvar dados reais em produção
+            break;
+
+        case 'pix':
+            // Você pode mostrar a chave ou QR Code (simulado)
+            break;
+
+        case 'presencial':
+            // Marca o pedido como "pagamento na entrega"
+            break;
+
+        case 'mercado_pago':
+            // Redireciona para o gateway Mercado Pago
+            // Você pode chamar um outro arquivo que crie a "preferência" como aquele `pagamento_mercadopago.php`
+            require 'pagamento_mercadopago.php';
+            exit;
+
+        default:
+            echo "Método de pagamento inválido.";
+            exit;
+    }
+
+    // Aqui você pode salvar o pedido no banco (status, total, itens...)
+    // Redirecionar para página de sucesso
+    // Suponha que aqui já foi verificado e aprovado (cartão, pix, presencial...)
+if ($pagamento_aprovado) {
+    header("Location: sucesso.php");
+    exit;
 } else {
-    echo "Erro ao cadastrar pedido: " . mysqli_error($conexao);
+    header("Location: falha.php");
+    exit;
+}
 }
 ?>
