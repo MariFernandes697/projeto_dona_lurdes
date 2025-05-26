@@ -7,7 +7,7 @@
             <p>No Armazém da Dona Lourdes, cada produto conta uma história do campo e a tradição se mistura com o frescor da roça!
             <br></p>
 
-        <br><br><a href="" class="botao">Mais informações &#8594 </a>
+        <br><br><a href="#mais-informacoes" class="botao">Mais informações &#8594 </a>
     </div>
 
     <div class="colunm">
@@ -44,48 +44,13 @@
                 </div>
                 <!--Fim-Categorias-corpo-->
             </div>
-
-
-
-
         <!--Fim-Destaque-Categorias-->
-        <!--Destaque-Produtos-->
-        <div class="corpo_categorias">
-
-            <h2 class="titulo">Produtos mais vendidos</h2>
-            <div class="linha">
-                <!--Produtos-->
-                <div class="colunm4">
-                    <a href="ver-produto.php" title="">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" alt="" width="200px" height="200px"></a>
-                    <h4>Pote de Mel Artesanal</h4>
-                    <p>R$ 14,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/geleia.png" alt="" width="200px" height="200px">
-                    <h4>Geleia de frutas</h4>
-                    <p>R$ 20,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/queijo_caseiro.png" alt="" width="200px" height="200px">
-                    <h4>Queijo Caseiro</h4>
-                    <p>R$ 45,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/bolacha.jpg" alt="" width="200px" height="200px">
-                    <h4>Bolachas de Nata</h4>
-                    <p>R$ 8,90</p>
-                </div>
-                <!--Fim-Produtos-->
-            </div>
-        </div>
-
         <!--Novidades-->
         <h2 class="titulo">--Novidades--</h2>
         <div class="linha">
 
             <!--Produtos-->
-            <div class="colunm4">
+            <div class="colunm4" id="mais-informacoes">
               
                 <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Barrinha-de-Cereal.jpg" alt="" width="200px" height="200px">
                 <h4>Barrinha de Cereal</h4>
@@ -123,7 +88,7 @@
             </div>
             <!--Fim-Produtos-->
 
-             <br><br><a href="" class="botao">Comprar agora &#8594;</a>
+             <br><br><a href="produtos.php" class="botao">Comprar agora &#8594;</a>
         </div>
         <!--Fim-Novidades-->
 

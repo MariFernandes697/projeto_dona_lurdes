@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Vendas Armazém do Sítio</title>
     <link rel="stylesheet" href="html/loja_dona_lurdes/css/style.css">
-    
+
 </head>
 <body>
     <!--Início-->
