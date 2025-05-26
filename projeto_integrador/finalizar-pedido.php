@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Redirecionar para página de sucesso
     // Suponha que aqui já foi verificado e aprovado (cartão, pix, presencial...)
 if ($pagamento_aprovado) {
-    header("Location: sucesso.php");
+    header("Location: listar/sucesso.php");
     exit;
 } else {
-    header("Location: falha.php");
+    header("Location: listar/falha.php");
     exit;
 }
 }
