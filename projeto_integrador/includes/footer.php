@@ -50,5 +50,21 @@
     <script  type = "módulo"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script> 
     <script  nomodule  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" ></script>
     <script  src="../html/loja_dona_lurdes/js/app.js"></script>
+    <script>
+        function toggleMenuUsuario() {
+            const menu = document.getElementById("dropdownUsuario");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Fecha o menu se clicar fora dele
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById("dropdownUsuario");
+            const usuario = document.querySelector('.menu-usuario img');
+
+            if (!usuario.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
