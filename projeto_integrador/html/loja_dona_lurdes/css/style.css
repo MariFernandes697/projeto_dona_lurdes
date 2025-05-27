@@ -249,6 +249,49 @@ ul{
     margin-left: 20px;
     display: none;
 }
+.perfil-usuario {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.perfil-usuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #555;
+}
+
+.menu-perfil {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.menu-perfil a,
+.menu-perfil button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
+    border: none;
+    background: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu-perfil a:hover,
+.menu-perfil button:hover {
+    background-color: #f0f0f0;
+}
 
 /* Mobile*/
 

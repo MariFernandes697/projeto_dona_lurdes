@@ -2,7 +2,8 @@
 session_start();
 
 // Verifica se a Dona Lurdes está logada
-if (!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] !== true) {
+if (!isset($_SESSION['admin_logada']) || $_SESSION['admin_logada'] !== true) 
+ {
     header("Location: login-admin.php");
     exit;
 }
@@ -10,12 +11,12 @@ if (!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] !== true) {
 require_once '../listar/conexao.php';
 
 // Busca os pedidos
-$sql = "SELECT p.id, p.usuario_id, p.total, p.metodo_pagamento, p.status, p.data_criacao, u.nome AS nome_cliente
+$sql = "SELECT p.id, p.usuario_id, p.total, p.metodo_pagamento, p.status, p.data_pedido, u.nome AS nome_cliente
         FROM pedidos p
         JOIN usuarios u ON p.usuario_id = u.id
         ORDER BY p.data_criacao DESC";
 
-$resultado = $conn->query($sql);
+$resultado = $conexao->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ $resultado = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Painel Administrativo</title>
-    <link rel="stylesheet" href="estilo-admin.css?v=3">
+    <link rel="stylesheet" href="admin.css?v=3">
 </head>
 <body>
     <div class="container-login">
@@ -50,7 +51,7 @@ $resultado = $conn->query($sql);
                                 <td>R$ ".number_format($pedido['total'], 2, ',', '.')."</td>
                                 <td>{$pedido['metodo_pagamento']}</td>
                                 <td>{$pedido['status']}</td>
-                                <td>".date('d/m/Y H:i', strtotime($pedido['data_criacao']))."</td>
+                                <td>".date('d/m/Y H:i', strtotime($pedido['data_pedido']))."</td>
                               </tr>";
                     }
                 } else {

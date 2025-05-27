@@ -23,3 +23,7 @@ produtoMiniatura[2].onclick = function(){
     produtoImg.src = produtoMiniatura[2].src;
 }
 
+function toggleMenu() {
+    var menu = document.getElementById('menuPerfil');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}

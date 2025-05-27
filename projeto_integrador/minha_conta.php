@@ -35,15 +35,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Entrar'])) {
     $resultado = mysqli_query($conexao, $query);
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {
-        $usuario = mysqli_fetch_assoc($resultado);
-        $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
-            echo "<script>alert('Login realizado com sucesso!'); window.location.href='$redirect';</script>";
+    $usuario = mysqli_fetch_assoc($resultado);
 
-            echo "<script>alert('Senha incorreta!');</script>";
-        }
+    if (password_verify($senha, $usuario['senha'])) {
+        $_SESSION['usuario_id'] = $usuario['id'];
+        $_SESSION['usuario_nome'] = $usuario['nome'];
+        
+        $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+        echo "<script>alert('Login realizado com sucesso!'); window.location.href='$redirect';</script>";
+        exit;
     } else {
-        echo "<script>alert('Usuário não encontrado!');</script>";
+        echo "<script>alert('Senha incorreta!');</script>";
     }
+} else {
+    echo "<script>alert('Usuário não encontrado!');</script>";
+
+}
+}
 ?>
 
 <!--Minha Conta-->

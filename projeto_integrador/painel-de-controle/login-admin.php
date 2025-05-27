@@ -20,6 +20,10 @@ if (isset($_SESSION['admin_logada'])) {
     <div class="container-login">
         <h2>Área da Dona Lurdes</h2>
         <form action="processar-login-admin.php" method="POST">
+        <?php if (isset($_GET['erro'])): ?>
+            <p style="color: red;">Usuário ou senha incorretos!</p>
+        <?php endif; ?>
+
             <label for="usuario">Usuário</label>
             <input type="text" name="usuario" id="usuario" required>
 

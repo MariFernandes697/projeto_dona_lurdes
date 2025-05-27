@@ -1,17 +1,21 @@
 <?php
 session_start();
 
-// Dados de exemplo (substitua por consulta ao banco)
-$usuario = $_POST['usuario'];
-$senha = $_POST['senha'];
+// Dados de login (você pode substituir por uma consulta ao banco no futuro)
+$usuario_valido = 'DonaLurdes';
+$senha_valida = 'Anne';
 
-$usuario_valido = 'dona_lurdes'; // Exemplo de nome de usuário
-$senha_valida = 'senha123'; // Exemplo de senha
+// Dados recebidos do formulário
+$usuario = $_POST['usuario'] ?? '';
+$senha = $_POST['senha'] ?? '';
 
+// Verifica se estão corretos
 if ($usuario === $usuario_valido && $senha === $senha_valida) {
     $_SESSION['admin_logada'] = true;
     header('Location: painel-admin.php');
+    exit;
 } else {
-    echo "Usuário ou senha inválidos!";
+    header('Location: login-admin.php?erro=1');
+    exit;
 }
 ?>
