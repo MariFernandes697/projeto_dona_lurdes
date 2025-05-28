@@ -4,7 +4,7 @@ require_once('../listar/conexao.php');
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: minha_conta.php");
+    header("Location: ../minha_conta.php");
     exit();
 }
 
@@ -40,6 +40,7 @@ $resultado = mysqli_query($conexao, $sql);
         .compras-container h2, p{
             color: var(--color05);
             font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
         }
         .compra {
             border-bottom: 1px solid #eee;
