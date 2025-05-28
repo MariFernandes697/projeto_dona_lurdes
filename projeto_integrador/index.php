@@ -15,6 +15,7 @@
     <div class="colunm">
         <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logoDonaLurdes.png" alt="">
     </div>
+    
 
 </div>
 

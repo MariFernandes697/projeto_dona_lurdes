@@ -12,6 +12,7 @@ $usuario_id = $_SESSION['usuario_id'];
 
 // Busca os pedidos do usuário
 $sql = "SELECT id, data_pedido, total, status FROM pedidos WHERE usuario_id = $usuario_id ORDER BY data_pedido DESC";
+
 $resultado = mysqli_query($conexao, $sql);
 ?>
 
@@ -32,7 +33,7 @@ $resultado = mysqli_query($conexao, $sql);
         .compras-container {
             max-width: 800px;
             margin: 50px auto;
-            background-color: var(--color02);
+            background-color: #fefae0;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 0 10px #ccc;
@@ -90,7 +91,7 @@ $resultado = mysqli_query($conexao, $sql);
                 <p><strong>Data:</strong> <?php echo date('d/m/Y', strtotime($pedido['data_pedido'])); ?></p>
                 <p><strong>Valor:</strong> R$ <?php echo number_format($pedido['total'], 2, ',', '.'); ?></p>
                 <p><strong>Status:</strong> <?php echo ucfirst($pedido['status']); ?></p>
-                <a href="detalhes_pedido.php?id=<?php echo $pedido['id']; ?>" class="botao-detalhes">Ver Detalhes</a>
+                <a href="funcionalidades/detalhes_pedido.php?id=<?php echo $pedido['id']; ?>" class="botao-detalhes">Ver Detalhes</a>
             </div>
         <?php endwhile; ?>
     <?php else: ?>

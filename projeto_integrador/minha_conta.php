@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once('includes/header-minha-conta.php');
 require_once('listar/conexao.php'); // Garante conexão com o banco
-session_start();
+
 
 // Cadastro de novo usuário
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Cadastrar'])) {
