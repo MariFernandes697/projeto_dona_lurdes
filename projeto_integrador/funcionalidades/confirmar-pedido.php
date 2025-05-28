@@ -4,7 +4,7 @@ require_once '../listar/conexao.php';
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: minha-conta.php");
+    header("Location: ../minha_conta.php");
     exit;
 }
 
@@ -101,66 +101,53 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
                 </tr>
             </tbody>
         </table>
+<form id="formPagamento" class="form-pagamento" action="../finalizar-pedido.php" method="POST">
+    <label for="endereco_entrega">Endereço para Entrega</label>
+    <input type="text" name="endereco_entrega" id="endereco_entrega" required>
 
-        <form id="formPagamento" class="form-pagamento" action="../finalizar-pedido.php" method="POST">
-            <div class="metodo">
-                <label><input type="radio" name="metodo_pagamento" value="cartao" checked> Cartão de Crédito</label>
-                <label><input type="radio" name="metodo_pagamento" value="pix"> PIX</label>
-                <label><input type="radio" name="metodo_pagamento" value="mercado_pago"> Mercado Pago</label>
-                 <label>
-                    <input type="radio" name="metodo_pagamento" value="presencial">
-                    <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Pagamento Presencial" width="20">
+    <div class="metodo">
+        <label><input type="radio" name="metodo_pagamento" value="cartao" checked> Cartão de Crédito</label>
+        <label><input type="radio" name="metodo_pagamento" value="pix"> PIX</label>
+        <label><input type="radio" name="metodo_pagamento" value="mercado_pago"> Mercado Pago</label>
+        <label>
+            <input type="radio" name="metodo_pagamento" value="presencial">
+            <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Pagamento Presencial" width="20">
+            Pagamento Presencial
+        </label>
+    </div>
 
-                    Pagamento Presencial
-                </label>
-               
+    <div class="pagamento-opcoes">
+        <div class="cartao-info">
+            <div class="icon-label">
+                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/credit-card.svg" alt="Cartão"> Cartão de Crédito
             </div>
+            <label for="nome_titular">Nome no Cartão</label>
+            <input type="text" name="nome_titular" id="nome_titular">
 
-            <div class="pagamento-opcoes">
-                <div class="cartao-info">
-                    <div class="icon-label">
-                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/credit-card.svg" alt="Cartão"> Cartão de Crédito
-                    </div>
-                    <label for="nome_titular">Nome no Cartão</label>
-                    <input type="text" name="nome_titular" id="nome_titular" required>
+            <label for="numero_cartao">Número do Cartão</label>
+            <input type="text" name="numero_cartao" id="numero_cartao">
 
-                    <label for="numero_cartao">Número do Cartão</label>
-                    <input type="text" name="numero_cartao" id="numero_cartao" required>
+            <label for="validade">Validade</label>
+            <input type="text" name="validade" id="validade" placeholder="MM/AA">
 
-                    <label for="validade">Validade</label>
-                    <input type="text" name="validade" id="validade" placeholder="MM/AA" required>
+            <label for="cvv">CVV</label>
+            <input type="text" name="cvv" id="cvv">
+        </div>
 
-                    <label for="cvv">CVV</label>
-                    <input type="text" name="cvv" id="cvv" required>
-                </div>
+        <div class="pix-info" style="display: none;">
+            <label>Sua chave PIX para pagamento:</label>
+            <input type="text" id="chave_pix" name="chave_pix" value="00020126450014BR.GOV.BCB.PIX0123chave pix alphanumerica5204000053039865802BR5911Dona Lurdes6008Loada-PR62070503***6304EFBC" readonly>
+            <button type="button" onclick="copiarPix()">Copiar</button>
 
-            <div class="pix-info" style="display: none;">
-                <label>Sua chave PIX para pagamento:</label>
-                <input type="text" id="chave_pix" value="00020126450014BR.GOV.BCB.PIX0123chave pix alphanumerica5204000053039865802BR5911Dona Lurdes6008Loada-PR62070503***6304EFBC" readonly>
-                <button type="button" onclick="copiarPix()">Copiar</button>
-
-                <div style="margin-top: 20px;">
-                    <p>Ou escaneie o QR Code abaixo:</p>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dona.lurdes@armazem.com.br" alt="QR Code PIX">
-                </div>
+            <div style="margin-top: 20px;">
+                <p>Ou escaneie o QR Code abaixo:</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dona.lurdes@armazem.com.br" alt="QR Code PIX">
             </div>
+        </div>
+    </div>
 
-
-<script>
-function copiarPix() {
-    const input = document.getElementById("chave_pix");
-    input.select();
-    input.setSelectionRange(0, 99999);
-    document.execCommand("copy");
-    alert("Chave PIX copiada com sucesso!");
-}
-</script>
-
-
-            </div>
-
-            <button type="submit" class="botao-confirmar">Confirmar e Pagar</button>
-        </form>
+    <button type="submit" class="botao-confirmar">Confirmar e Pagar</button>
+</form>
 
         <br>
         <a href="../carrinho.php">Voltar ao carrinho</a>
@@ -206,7 +193,6 @@ document.getElementById("formPagamento").addEventListener("submit", function(e) 
         const erros = [];
 
         if (nome === "") erros.push("O nome do titular é obrigatório.");
-
         if (!/^\d{16}$/.test(numero)) erros.push("O número do cartão deve ter 16 dígitos.");
 
         if (!/^\d{2}\/\d{2}$/.test(validade)) {

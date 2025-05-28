@@ -45,34 +45,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Aqui entra o switch
-    switch ($metodo) {
-        case 'cartao':
-            // Aqui você pode pegar os dados do cartão e salvar no banco (simulado)
-            // Por segurança, você não deve salvar dados reais em produção
-            break;
+ switch ($metodo) {
+    case 'cartao':
+        $pagamento_aprovado = true;
+        break;
 
-        case 'pix':
-            // Você pode mostrar a chave ou QR Code (simulado)
-            break;
+    case 'pix':
+        $chave = $_POST['chave_pix'] ?? '';
 
-        case 'presencial':
-            // Marca o pedido como "pagamento na entrega"
-            break;
+        // Se a chave estiver correta, aprova
+        if ($chave === '00020126450014BR.GOV.BCB.PIX0123chave pix alphanumerica5204000053039865802BR5911Dona Lurdes6008Loada-PR62070503***6304EFBC') {
+            $pagamento_aprovado = true;
+        } else {
+            $pagamento_aprovado = false;
+        }
+        break;
 
-        case 'mercado_pago':
-            // Redireciona para o gateway Mercado Pago
-            // Você pode chamar um outro arquivo que crie a "preferência" como aquele `pagamento_mercadopago.php`
-            require 'pagamento_mercadopago.php';
-            exit;
+    case 'presencial':
+        // Pagamento será feito na entrega é "pendente"
+        $pagamento_aprovado = true; 
+        break;
 
-        default:
-            echo "Método de pagamento inválido.";
-            exit;
-    }
+    case 'mercado_pago':
+        // Redireciona para o gateway Mercado Pago
+        require 'pagamento_mercadopago.php';
+        exit;
 
-    // Aqui você pode salvar o pedido no banco (status, total, itens...)
-    // Redirecionar para página de sucesso
-    // Suponha que aqui já foi verificado e aprovado (cartão, pix, presencial...)
+    default:
+        echo "Método de pagamento inválido.";
+        exit;
+}
+
+$usuario_id = $_SESSION['usuario_id'] ?? null;
+$data_pedido = date('Y-m-d H:i:s');
+$status = ($metodo === 'presencial') ? 'pendente' : 'aprovado';
+$metodo_pagamento = $metodo;
+$total = 0;
+
+if (!isset($_SESSION['carrinho']) || empty($_SESSION['carrinho'])) {
+    echo "Carrinho vazio.";
+    exit;
+}
+
+foreach ($_SESSION['carrinho'] as $item) {
+    $total += $item['preco'] * $item['quantidade'];
+}
+
+$stmt = $conexao->prepare("INSERT INTO pedidos (usuario_id, data_pedido, total, status, metodo_pagamento) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("isdss", $usuario_id, $data_pedido, $total, $status, $metodo_pagamento);
+$stmt->execute();
+$pedido_id = $stmt->insert_id;
+$stmt->close();
+
+foreach ($_SESSION['carrinho'] as $item) {
+    //depois eu resolvo
+    $produto_id = $item['produto_id'] ?? $item['id'] ?? null;
+    $quantidade = $item['quantidade'];
+    $preco = floatval(str_replace(',', '.', $item['preco']));
+
+    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preco);
+    $stmt->execute();
+    $stmt->close();
+}
+
+// 4. Limpa o carrinho
+unset($_SESSION['carrinho']);
+echo "Pagamento aprovado? ";
+var_dump($pagamento_aprovado);
+exit;
+
 if ($pagamento_aprovado) {
     header("Location: listar/sucesso.php");
     exit;
