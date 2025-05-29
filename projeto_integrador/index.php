@@ -1,6 +1,7 @@
 <?php 
 
- require_once('includes/header.php')?>
+ require_once('includes/header.php');
+ require_once('listar/conexao.php')?>
 
 <div class="linha">
 
@@ -50,8 +51,22 @@
         <!--Fim-Destaque-Categorias-->
         <!--Novidades-->
         <h2 class="titulo">--Novidades--</h2>
+        <?php
+$sql_destaques = "SELECT * FROM produtos ORDER BY RAND() LIMIT 6";
+$resultado_destaques = mysqli_query($conexao, $sql_destaques);
+?>
+<div class="produtos-destaque">
+    <?php while($produto = mysqli_fetch_assoc($resultado_destaques)): ?>
+        <div class="produto">
+             <img src="<?php echo $produto['imagem']; ?>" alt="<?php echo $produto['nome']; ?>">
+            <h3><?php echo $produto['nome']; ?></h3>
+            <p>R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
+            <a href="ver-produto.php?id=<?php echo $produto['id']; ?>" class="botao">Ver Produto</a>
+        </div>
+    <?php endwhile; ?>
+</div>
         <div class="linha">
-
+    
             <!--Produtos-->
             <div class="colunm4" id="mais-informacoes">
               

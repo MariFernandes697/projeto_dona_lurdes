@@ -33,24 +33,6 @@ if (isset($_GET['id'])) {
                 <img src="<?php echo $produto['imagem']; ?>" width="80%" alt="<?php echo $produto['nome']; ?>" id="produtoImg">
 
 
-                <div class="img-linha">
-                    <div class="img-colunm">
-                        <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" width="100%"  alt="" class="miniatura-do-produto">
-                
-                    </div>
-                    <div class="img-colunm">
-                        <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_mamao.png"  width="100%" alt="" class="miniatura-do-produto">
-                
-                    </div>
-                    <div class="img-colunm">
-                        <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_amora.png"  width="100%"  alt="" class="miniatura-do-produto">
-                
-                    </div>
-                    <div class="img-colunm">
-                        <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/doce_de_amora.png"  width="100%"  alt="" class="miniatura-do-produto">
-                
-                    </div>
-                </div>
                  
             </div>
 
@@ -94,32 +76,28 @@ if (isset($_GET['id'])) {
         
     </div>
 </div>
+<?php
 
-        <!--Destaque-Produtos-->
-        <div class="corpo_categorias">
-            <div class="linha">
-                <!--Produtos-->
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/pote_de_mel.jpeg" alt="" width="200px" height="200px">
-                    <h4>Pote de Mel Artesanal</h4>
-                    <p>R$ 14,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/geleia.png" alt="" width="200px" height="200px">
-                    <h4>Geleia de frutas</h4>
-                    <p>R$ 20,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/queijo_caseiro.png" alt="" width="200px" height="200px">
-                    <h4>Queijo Caseiro</h4>
-                    <p>R$ 45,90</p>
-                </div>
-                <div class="colunm4">
-                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/bolacha.jpg" alt="" width="200px" height="200px">
-                    <h4>Bolachas de Nata</h4>
-                    <p>R$ 8,90</p>
-                </div>
-                        <!--Fim-Produtos-->
-            </div>
+// Busca produtos relacionados (exceto o produto atual)
+$produto_id_atual = $_GET['id'];
+
+$sql_relacionados = "
+SELECT * FROM produtos 
+WHERE id != $produto_id_atual 
+ORDER BY RAND() 
+LIMIT 4
+";
+
+$resultado_relacionados = mysqli_query($conexao, $sql_relacionados);
+?>
+<div class="produtos-relacionados">
+    <?php while($relacionado = mysqli_fetch_assoc($resultado_relacionados)): ?>
+        <div class="produto">
+            <img src="<?php echo $relacionado['imagem']; ?>" alt="<?php echo $relacionado['nome']; ?>">
+            <h4><?php echo $relacionado['nome']; ?></h4>
+            <p>R$ <?php echo number_format($relacionado['preco'], 2, ',', '.'); ?></p>
+            <a href="ver-produto.php?id=<?php echo $relacionado['id']; ?>" class="botao">Ver Produto</a>
         </div>
+    <?php endwhile; ?>
+    </div>
 <?php require_once('includes/footer.php')?>

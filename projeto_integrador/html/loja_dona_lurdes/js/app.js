@@ -10,19 +10,6 @@ function menucelular(){
     }
 }
 
-var produtoImg = document.getElementById("produtoImg");
-var produtoMiniatura = document.getElementsByClassName("miniatura-do-produto");
-
-produtoMiniatura[0].onclick = function(){
-    produtoImg.src = produtoMiniatura[0].src;
-}
-produtoMiniatura[1].onclick = function(){
-    produtoImg.src = produtoMiniatura[1].src;
-}
-produtoMiniatura[2].onclick = function(){
-    produtoImg.src = produtoMiniatura[2].src;
-}
-
 function toggleMenu() {
     var menu = document.getElementById('menuPerfil');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
