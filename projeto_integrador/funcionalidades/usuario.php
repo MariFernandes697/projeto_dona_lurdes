@@ -20,7 +20,6 @@ $usuario = mysqli_fetch_assoc($resultado);
 <head>
     <meta charset="UTF-8">
     <title>Minha Conta</title>
-    <link rel="stylesheet" href="html/loja_dona_lurdes/css/style.css">
     <style>
         :root {
             --color01: #FFE9A3;
@@ -93,7 +92,7 @@ $usuario = mysqli_fetch_assoc($resultado);
 
     <div class="botoes">
         <a href="minhas-compras.php">Minhas Compras</a>
-        <a href="editar-usuario.php">Editar Dados</a>
+        <a href="editar-usuario.php" class="botao">Editar Meus Dados</a>
         <a href="../logout.php">Sair</a>
     </div>
 </div>

@@ -5,7 +5,7 @@ require_once '../listar/conexao.php';
 
 
 $usuario_id = $_SESSION['usuario_id'] ?? null;
-$endereco_atual = '';
+$endereco = '';
 
 if ($usuario_id) {
     $stmt = $conexao->prepare("SELECT endereco FROM usuarios WHERE id = ?");
@@ -102,8 +102,8 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
                 foreach ($_SESSION['carrinho'] as $produto_id => $item) {
                     $nome = $item['nome'];
                     $quantidade = $item['quantidade'];
-                    $preco = $item['preco'];
-                    $subtotal = $quantidade * $preco;
+                    $preco_unitario = $item['preco'];
+                    $subtotal = $quantidade * $preco_unitario;
                     $total += $subtotal;
                     echo "<tr><td>$nome</td><td>$quantidade</td><td>R$ ".number_format($subtotal, 2, ',', '.')."</td></tr>";
                 }
@@ -116,7 +116,7 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
         </table>
 <form id="formPagamento" class="form-pagamento" action="../finalizar-pedido.php" method="POST">
     <label for="endereco">Endereço para Entrega</label>
-    <input type="text" name="endereco" id="endereco" value="<?= htmlspecialchars($endereco_atual) ?>" required>
+    <input type="text" name="endereco" id="endereco" value="<?= htmlspecialchars($endereco) ?>" required>
 
     <div class="metodo">
         <label><input type="radio" name="metodo_pagamento" value="cartao" checked> Cartão de Crédito</label>

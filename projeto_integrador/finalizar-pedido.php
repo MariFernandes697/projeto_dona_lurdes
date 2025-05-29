@@ -100,10 +100,10 @@ foreach ($_SESSION['carrinho'] as $item) {
     //depois eu resolvo
     $produto_id = $item['produto_id'] ?? $item['id'] ?? null;
     $quantidade = $item['quantidade'];
-    $preço_unitario = floatval(str_replace(',', '.', $item['preço_unitario']));
+    $preco = floatval(str_replace(',', '.', $item['preco']));
 
-    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preço_unitario) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preço_unitario);
+    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco_unitario) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preco_unitario);
     $stmt->execute();
     $stmt->close();
 }
@@ -120,14 +120,14 @@ if (!empty($usuario_id) && !empty($endereco)) {
     $stmt->bind_param("si", $endereco, $usuario_id);
     $stmt->execute();
     $stmt->close();
-}
-exit;
+}}
+
+echo "<script>console.log('Pagamento aprovado? " . ($pagamento_aprovado ? "sim" : "não") . "');</script>";
 if ($pagamento_aprovado) {
     header("Location: listar/sucesso.php");
     exit;
 } else {
     header("Location: listar/falha.php");
     exit;
-}
 }
 ?>

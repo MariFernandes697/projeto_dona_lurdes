@@ -140,7 +140,7 @@ session_start()
                     <div class="menu-usuario">
                         <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png"  alt="Usuário" onclick="toggleMenuUsuario()">
                         <div class="dropdown-usuario" id="dropdownUsuario">
-                            <a href="minha_conta.php" title="">Minha Conta</a>
+                            <a href="funcionalidades/usuario.php" title="">Minha Conta</a>
                             <a href="funcionalidades/minhas-compras.php">Minhas Compras</a>
                             <a href="logout.php">Sair</a>
                         </div>
