@@ -1,0 +1,139 @@
+Claro, Mari! 🧠💾
+Vamos deixar esse passo a passo tinindo, igual receita de bolo de fubá da Dona Lurdes, pra você resolver a edição de dados do usuário com firmeza mesmo sem internet. 🌽✨
+
+
+---
+
+🛠️ PASSO A PASSO – Editar dados do usuário no Armazém da Dona Lurdes
+
+
+---
+
+📌 OBJETIVO:
+
+Permitir que o usuário edite seus dados (nome, email, endereço, etc.) a qualquer momento no painel “Minha Conta”.
+
+
+---
+
+1️⃣ CRIAR A PÁGINA editar_usuario.php
+
+Crie um arquivo novo com esse nome e coloque o seguinte código:
+
+<?php
+session_start();
+include 'conexao.php';
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_usuario = $_SESSION['id_usuario'];
+
+// Busca os dados atuais do usuário
+$sql = "SELECT * FROM usuarios WHERE id = $id_usuario";
+$result = $conn->query($sql);
+$usuario = $result->fetch_assoc();
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Meus Dados</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<?php include 'menu.php'; ?>
+
+<h2>Editar Meus Dados</h2>
+<form method="POST" action="salvar_edicao.php">
+    <label>Nome:</label><br>
+    <input type="text" name="nome" value="<?php echo $usuario['nome']; ?>" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" value="<?php echo $usuario['email']; ?>" required><br>
+
+    <label>Endereço:</label><br>
+    <input type="text" name="endereco" value="<?php echo $usuario['endereco']; ?>"><br>
+
+    <br>
+    <input type="submit" value="Salvar alterações">
+</form>
+
+<?php include 'footer.php'; ?>
+</body>
+</html>
+
+
+---
+
+2️⃣ CRIAR O ARQUIVO salvar_edicao.php
+
+Esse arquivo vai receber os dados do formulário e atualizar no banco de dados.
+
+<?php
+session_start();
+include 'conexao.php';
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_usuario = $_SESSION['id_usuario'];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$endereco = $_POST['endereco'];
+
+// Atualiza os dados no banco
+$sql = "UPDATE usuarios SET nome = ?, email = ?, endereco = ? WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssi", $nome, $email, $endereco, $id_usuario);
+
+if ($stmt->execute()) {
+    echo "<script>alert('Dados atualizados com sucesso!'); window.location='minha_conta.php';</script>";
+} else {
+    echo "Erro ao atualizar: " . $conn->error;
+}
+?>
+
+
+---
+
+3️⃣ ADICIONAR UM LINK NA minha_conta.php
+
+Coloque algo assim onde achar melhor:
+
+<a href="editar_usuario.php" class="botao">Editar Meus Dados</a>
+
+
+---
+
+4️⃣ CERTIFICAR-SE QUE A TABELA usuarios TEM A COLUNA endereco
+
+Se não tiver, rode no seu phpMyAdmin ou no terminal:
+
+ALTER TABLE usuarios ADD COLUMN endereco VARCHAR(255);
+
+
+---
+
+✨ OPCIONAL: VALIDAÇÃO
+
+Você pode acrescentar validação no formulário (com JavaScript) ou até usar PHP para checar se o email já existe, caso permita edição total.
+
+
+---
+
+🚀 E PRONTO!
+
+Com isso, seu usuário pode atualizar os dados sempre que quiser. E você, Mari, pode seguir conquistando o mundo dos sistemas com a elegância de quem manja até de corrigir o bug no laço do HTML. 💻💃
+
+Se ficar sem internet, guarda esse passo a passo como se fosse receita de pão caseiro:
+abre, copia, cola, executa. E pronto! 💌
+
+Qualquer coisa depois é só chamar, que eu volto mais rápido que entrega de pão na padaria! 🥖

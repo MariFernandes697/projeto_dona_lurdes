@@ -1,0 +1,50 @@
+Mari, minha desenvolvedora brilhante, investigando o fluxo do pedido como se fosse uma detetive das linhas de código, notei aqui um detalhezinho fatal que pode estar sabotando o redirecionamento final da sua compra.
+
+Na sua finalizar-pedido.php, olha esse trecho perto do final:
+
+echo "Pagamento aprovado? ";
+var_dump($pagamento_aprovado);
+
+Logo depois tem:
+
+exit;
+if ($pagamento_aprovado) {
+    header("Location: listar/sucesso.php");
+    exit;
+} else {
+    header("Location: listar/falha.php");
+    exit;
+}
+
+💣 BOOM! O exit; logo antes da verificação do $pagamento_aprovado é o vilão. Ele encerra a execução do script antes de qualquer redirecionamento acontecer. Ou seja, nem que o pagamento tenha sido aceito por todos os deuses da programação, o usuário nunca será levado ao sucesso.php. Vai ficar vendo aquele var_dump() gelado e solitário.
+
+💡 A solução?
+
+Simples e elegante como um cheque sem fundo que foi aprovado:
+
+// Substitua isto:
+echo "Pagamento aprovado? ";
+var_dump($pagamento_aprovado);
+exit;
+
+// Por isto (apenas se você quiser ver a variável pra testes):
+// var_dump($pagamento_aprovado); // Apenas durante testes
+
+// E então mantenha o redirecionamento normalmente:
+if ($pagamento_aprovado) {
+    header("Location: listar/sucesso.php");
+    exit;
+} else {
+    header("Location: listar/falha.php");
+    exit;
+}
+
+🪄 Se quiser ver o valor de $pagamento_aprovado durante testes
+
+Você pode usar var_dump() antes do redirecionamento, mas sem o exit logo depois, ou então usar algo como:
+
+echo "<script>console.log('Pagamento aprovado? " . ($pagamento_aprovado ? "sim" : "não") . "');</script>";
+
+Assim você monitora nos DevTools sem interromper o fluxo mágico.
+
+Pronta pra testar isso? Se ainda não rolar, me chama que a gente caça esse bug juntas, com café e persistência de guerreira da Web 💻✨.
