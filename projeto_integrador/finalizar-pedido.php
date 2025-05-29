@@ -97,15 +97,19 @@ $pedido_id = $stmt->insert_id;
 $stmt->close();
 
 foreach ($_SESSION['carrinho'] as $item) {
-    //depois eu resolvo
     $produto_id = $item['produto_id'] ?? $item['id'] ?? null;
     $quantidade = $item['quantidade'];
     $preco = floatval(str_replace(',', '.', $item['preco']));
 
-    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco_unitario) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preco_unitario);
-    $stmt->execute();
-    $stmt->close();
+    if ($produto_id !== null) {
+        $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco_unitario) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preco);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        // Logar ou tratar erro se necessário
+        echo "Erro: produto_id está NULL!";
+    }
 }
 
 // 4. Limpa o carrinho
