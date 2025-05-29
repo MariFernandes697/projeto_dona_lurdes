@@ -48,37 +48,61 @@ session_start()
         .dropdown-usuario a:hover {
             background-color: #f1f1f1;
         }
-.produtos-relacionados {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.produto {
-    background-color: #fff8e1;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px #ccc;
-    text-align: center;
-}
-.produto img {
-    max-width: 100%;
-    height: auto;
-}
-.botao {
-    background-color: #A4C994;
-    color: white;
-    padding: 10px;
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-.botao:hover {
-    background-color: #88b277;
+.container-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
 }
 
+.card-produto {
+  background-color: #fff8ed;
+  border: 2px solid #ffefd7;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 2px 8px rgba(180,174,174,0.1);
+}
+
+.card-produto:hover {
+  transform: scale(1.03);
+}
+
+.card-produto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-produto h3 {
+  font-size: 1.25rem;
+  color: #4e2e0f;
+  margin: 8px 0 4px;
+}
+
+.card-produto p {
+  font-size: 1rem;
+  color: #6b4c1d;
+  margin: 4px 0 12px;
+}
+
+.botao-vermais {
+  background-color: #5cb85c;
+  color: #fff;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.botao-vermais:hover {
+  background-color: #4cae4c;
+}
 
     </style>
 </head>

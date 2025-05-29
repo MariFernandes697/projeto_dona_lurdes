@@ -87,14 +87,14 @@ LIMIT 4
 
 $resultado_relacionados = mysqli_query($conexao, $sql_relacionados);
 ?>
-<div class="produtos-relacionados">
-    <?php while($relacionado = mysqli_fetch_assoc($resultado_relacionados)): ?>
-        <div class="produto">
-            <img src="<?php echo $relacionado['imagem']; ?>" alt="<?php echo $relacionado['nome']; ?>">
-            <h4><?php echo $relacionado['nome']; ?></h4>
-            <p>R$ <?php echo number_format($relacionado['preco'], 2, ',', '.'); ?></p>
-            <a href="ver-produto.php?id=<?php echo $relacionado['id']; ?>" class="botao">Ver Produto</a>
-        </div>
-    <?php endwhile; ?>
+<div class="container-produtos">
+  <?php while($rel = mysqli_fetch_assoc($resultado_relacionados)): ?>
+    <div class="card-produto">
+      <img src="<?= $rel['imagem'] ?>" alt="<?= $rel['nome'] ?>">
+      <h3><?= $rel['nome'] ?></h3>
+      <p><strong>R$ <?= number_format($rel['preco'],2,',','.') ?></strong></p>
+      <a href="ver-produto.php?id=<?= $rel['id'] ?>" class="botao-vermais">Ver Produto</a>
     </div>
+  <?php endwhile; ?>
+</div>
 <?php require_once('includes/footer.php')?>

@@ -1,26 +1,6 @@
 <?php
 session_start();
 require_once 'listar/conexao.php'; // ou o caminho correto
-
-
-if (!isset($_SESSION['usuario_id'])) {
-  header("Location: minha_conta.php");
-  exit;
-}
-$usuario_id = $_SESSION['usuario_id'];
-
-// Pega o endereço enviado pelo formulario
-$endereco = trim($_POST['endereco'] ?? '');
-
-// Atualiza o endereço do usuário
-if ($endereco !== '') {
-  $upd = $conexao->prepare("UPDATE usuarios SET endereco = ? WHERE id = ?");
-  $upd->bind_param("si", $endereco, $usuario_id);
-  $upd->execute();
-  $upd->close();
-}
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $metodo = $_POST['metodo_pagamento'] ?? '';
 
@@ -120,10 +100,10 @@ foreach ($_SESSION['carrinho'] as $item) {
     //depois eu resolvo
     $produto_id = $item['produto_id'] ?? $item['id'] ?? null;
     $quantidade = $item['quantidade'];
-    $preco = floatval(str_replace(',', '.', $item['preco']));
+    $preço_unitario = floatval(str_replace(',', '.', $item['preço_unitario']));
 
-    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preco) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preco);
+    $stmt = $conexao->prepare("INSERT INTO itens_pedido (pedido_id, produto_id, quantidade, preço_unitario) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiid", $pedido_id, $produto_id, $quantidade, $preço_unitario);
     $stmt->execute();
     $stmt->close();
 }

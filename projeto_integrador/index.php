@@ -52,60 +52,20 @@
         <!--Novidades-->
         <h2 class="titulo">--Novidades--</h2>
         <?php
-$sql_destaques = "SELECT * FROM produtos ORDER BY RAND() LIMIT 6";
+$sql_destaques = "SELECT * FROM produtos ORDER BY RAND() LIMIT 7";
 $resultado_destaques = mysqli_query($conexao, $sql_destaques);
 ?>
-<div class="produtos-destaque">
-    <?php while($produto = mysqli_fetch_assoc($resultado_destaques)): ?>
-        <div class="produto">
-             <img src="<?php echo $produto['imagem']; ?>" alt="<?php echo $produto['nome']; ?>">
-            <h3><?php echo $produto['nome']; ?></h3>
-            <p>R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
-            <a href="ver-produto.php?id=<?php echo $produto['id']; ?>" class="botao">Ver Produto</a>
-        </div>
-    <?php endwhile; ?>
+<div class="container-produtos">
+  <?php while($produto = mysqli_fetch_assoc($resultado_destaques)): ?>
+    <div class="card-produto">
+      <img src="<?= $produto['imagem'] ?>" alt="<?= $produto['nome'] ?>">
+      <h3><?= $produto['nome'] ?></h3>
+      <p><strong>R$ <?= number_format($produto['preco'],2,',','.') ?></strong></p>
+      <a href="ver-produto.php?id=<?= $produto['id'] ?>" class="botao-vermais">Ver Produto</a>
+    </div>
+  <?php endwhile; ?>
 </div>
         <div class="linha">
-    
-            <!--Produtos-->
-            <div class="colunm4" id="mais-informacoes">
-              
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Barrinha-de-Cereal.jpg" alt="" width="200px" height="200px">
-                <h4>Barrinha de Cereal</h4>
-                <p>R$ 11,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Geleia-de-Pimenta-cozinharoman-ig1-min.jpg" alt="" width="200px" height="200px">
-                <h4>Geleia de Pimentas</h4>
-                <p>R$ 19,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/paoArtenasal.jpg" alt="" width="200px" height="200px">
-                <h4>Pão Artesanal</h4>
-                <p>R$ 29,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/queijos-azuis.jpg" alt="" width="200px" height="200px">
-                <h4>Queijos Azuis</h4>
-                <p>R$ 51,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/sequilhos.webp" alt="" width="200px" height="200px">
-                <h4>Sequilhos</h4>
-                <p>R$ 10,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/oleaginosas.jpg" alt="" width="200px" height="200px">
-                <h4>oleaginosas</h4>
-                <p>R$ 8,90</p>
-            </div>
-            <div class="colunm4">
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/produtos artesanais/Frutas-Vermelhas.png" alt="" width="200px" height="200px">
-                <h4> Torta Frutas Vermelhas</h4>
-                <p>R$ 8,90 Kg</p>
-            </div>
-            <!--Fim-Produtos-->
-
              <br><br><a href="produtos.php" class="botao">Comprar agora &#8594;</a>
         </div>
         <!--Fim-Novidades-->
