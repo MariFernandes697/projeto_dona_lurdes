@@ -2,6 +2,25 @@
 session_start();
 require_once 'listar/conexao.php'; // ou o caminho correto
 
+
+if (!isset($_SESSION['usuario_id'])) {
+  header("Location: minha_conta.php");
+  exit;
+}
+$usuario_id = $_SESSION['usuario_id'];
+
+// Pega o endereço enviado pelo formulario
+$endereco = trim($_POST['endereco'] ?? '');
+
+// Atualiza o endereço do usuário
+if ($endereco !== '') {
+  $upd = $conexao->prepare("UPDATE usuarios SET endereco = ? WHERE id = ?");
+  $upd->bind_param("si", $endereco, $usuario_id);
+  $upd->execute();
+  $upd->close();
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $metodo = $_POST['metodo_pagamento'] ?? '';
 
@@ -113,8 +132,16 @@ foreach ($_SESSION['carrinho'] as $item) {
 unset($_SESSION['carrinho']);
 echo "Pagamento aprovado? ";
 var_dump($pagamento_aprovado);
-exit;
 
+$endereco = trim($_POST['endereco'] ?? '');
+
+if (!empty($usuario_id) && !empty($endereco)) {
+    $stmt = $conexao->prepare("UPDATE usuarios SET endereco = ? WHERE id = ?");
+    $stmt->bind_param("si", $endereco, $usuario_id);
+    $stmt->execute();
+    $stmt->close();
+}
+exit;
 if ($pagamento_aprovado) {
     header("Location: listar/sucesso.php");
     exit;

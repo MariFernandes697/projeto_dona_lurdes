@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="html/loja_dona_lurdes_produtos/css/style.css">
     <link rel="stylesheet" href="html/loja_dona_lurdes_produtos/css/carrinho.css">
     <link rel="stylesheet" href="html/loja_dona_lurdes_produtos/css/minha-conta.css">
+    <style> 
+.alerta-login {
+    background-color: #ffe0e0;
+    color: #a00;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+} </style>
 </head>
 <body>
     <!--Início-->
@@ -28,7 +38,7 @@
                     <li><a href="index.php" title="">Início</a></li>
                     <li><a href="produtos.php" title="">Produtos</a></li>
                     <li><a href="#contato" title="">Contato</a></li>
-                    <li><a href="minha_conta.php" title="">Minha Conta</a></li>
+                    <li><a href="minha_conta.php" title="">Login</a></li>
                 </ul>
                </nav>
 

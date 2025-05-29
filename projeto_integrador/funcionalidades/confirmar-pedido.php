@@ -2,8 +2,21 @@
 session_start();
 require_once '../listar/conexao.php';
 
-// Verifica se o usuário está logado
+
+
+$usuario_id = $_SESSION['usuario_id'] ?? null;
+$endereco_atual = '';
+
+if ($usuario_id) {
+    $stmt = $conexao->prepare("SELECT endereco FROM usuarios WHERE id = ?");
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $stmt->bind_result($endereco_atual);
+    $stmt->fetch();
+    $stmt->close();
+}
 if (!isset($_SESSION['usuario_id'])) {
+    $_SESSION['mensagem'] = "Você precisa fazer login antes de finalizar sua compra.";
     header("Location: ../minha_conta.php");
     exit;
 }
@@ -102,8 +115,8 @@ $usuario_email = ''; // opcional, se você armazenar o email na sessão
             </tbody>
         </table>
 <form id="formPagamento" class="form-pagamento" action="../finalizar-pedido.php" method="POST">
-    <label for="endereco_entrega">Endereço para Entrega</label>
-    <input type="text" name="endereco_entrega" id="endereco_entrega" required>
+    <label for="endereco">Endereço para Entrega</label>
+    <input type="text" name="endereco" id="endereco" value="<?= htmlspecialchars($endereco_atual) ?>" required>
 
     <div class="metodo">
         <label><input type="radio" name="metodo_pagamento" value="cartao" checked> Cartão de Crédito</label>

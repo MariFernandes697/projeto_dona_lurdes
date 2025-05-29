@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,6 +10,44 @@
     <link rel="stylesheet" href="html/loja_dona_lurdes/css/style.css">
     <link rel="stylesheet" href="html/loja_dona_lurdes_produtos/css/style.css">
     <style>
+.menu-usuario {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .menu-usuario img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        .dropdown-usuario {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            min-width: 160px;
+            z-index: 999;
+            margin-top: 10px;
+        }
+
+        .dropdown-usuario a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-usuario a:hover {
+            background-color: #f1f1f1;
+        }
 .produtos-relacionados {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -60,12 +101,28 @@
                     <li><a href="index.php" title="">Início</a></li>
                     <li><a href="produtos.php" title="">Produtos</a></li>
                     <li><a href="#contato" title="">Contato</a></li>
-                    <li><a href="minha_conta.php" title="">Minha Conta</a></li>
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+                            <li><a href="minha_conta.php">Login</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+
+                <a href="carrinho.php" title="">
+                    <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/carrinho-de_compras.png" alt="Carrinho" width="60px" height="60px">
+                </a>
+
+                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/menu.png" alt="Menu Celular" class="menu-celular" onclick="menucelular()">
+                <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <div class="menu-usuario">
+                        <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png"  alt="Usuário" onclick="toggleMenuUsuario()">
+                        <div class="dropdown-usuario" id="dropdownUsuario">
+                            <a href="minha_conta.php" title="">Minha Conta</a>
+                            <a href="funcionalidades/minhas-compras.php">Minhas Compras</a>
+                            <a href="logout.php">Sair</a>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 </ul>
                </nav>
-
-                <a href="carrinho.php" title=""><img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/carrinho-de_compras.png" alt="" width="60px" height="60px"></a>
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/menu.png" alt="" class="menu-celular" onclick="menucelular()">
-               <!--Fim-Menu-->
             
             </div>

@@ -1,10 +1,7 @@
-<?php require_once('includes/header-ver-produto.php')?>
+<?php 
+require_once('includes/header-ver-produto.php')?>
 <?php
 include 'listar/conexao.php';
-
-session_start();
-
-
 
 // Verifica se o ID foi passado na URL
 if (isset($_GET['id'])) {
