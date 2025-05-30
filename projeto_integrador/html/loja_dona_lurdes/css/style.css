@@ -225,6 +225,7 @@ small{
 .rodape-colunm3, .rodape-colunm4{
     flex-basis: 12%;
     text-align: right;
+    text-decoration: none;
 }
 ul{
     list-style-type: none;

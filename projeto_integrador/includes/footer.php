@@ -30,7 +30,7 @@
                         <h3>Redes Sociais</h3>
                       <ul>
                         <li>Facebook</li>
-                        <li>Instagram</li>
+                        <li><a href="https://www.instagram.com/armazem_sitio/">Instagram</a></li>
                         <li>LinkedIn</li>
                       </ul>
 
