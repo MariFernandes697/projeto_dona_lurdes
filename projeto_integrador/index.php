@@ -56,15 +56,18 @@
     
                             <div class="colunm">
                                 <h1>Armazém da Dona Lourdes.<br> Nossa História</h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Molestias porro natus quisquam, ducimus in tempore necessitatibus facere, 
-                                        accusamus aperiam recusandae sed voluptas doloribus ut dolorem obcaecati delectus iste maiores! Unde?
+                                    <p>
+Dona Lourdes, com seus 53 anos, mantém vivo seu negócio há mais de 20 anos, cultivando sabores e memórias autênticos.
+
+Do pão quentinho que perfuma o ar, ao mel dourado e às verduras vibrantes, tudo aqui respira a pureza do campo. Cada item é selecionado com o amor e o respeito que só a terra e quem trabalha com ela podem oferecer.
+
+Nosso armazém é o seu convite para sentir o abraço e a tradição do interior, onde cada compra é uma experiência única. Venha nos visitar e leve um pedacinho do campo para sua casa!
                                     <br></p>
     
                             </div>
     
                             <div class="colunm">
-                                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logoDonaLurdes.png" alt="">
+                                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/Design sem nome (1).jpg" alt="" margin-left="30px">
                             </div>
     
                         </div>
