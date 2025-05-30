@@ -49,10 +49,32 @@
                 <!--Fim-Categorias-corpo-->
             </div>
         <!--Fim-Destaque-Categorias-->
+<div class="banner" id="mais-informacoes">
+    <div class="container">
+    
+                 <div class="linha">
+    
+                            <div class="colunm">
+                                <h1>Armazém da Dona Lourdes.<br> Nossa História</h1>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                        Molestias porro natus quisquam, ducimus in tempore necessitatibus facere, 
+                                        accusamus aperiam recusandae sed voluptas doloribus ut dolorem obcaecati delectus iste maiores! Unde?
+                                    <br></p>
+    
+                            </div>
+    
+                            <div class="colunm">
+                                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logoDonaLurdes.png" alt="">
+                            </div>
+    
+                        </div>
+    </div>
+</div>
+         
         <!--Novidades-->
         <h2 class="titulo">--Novidades--</h2>
         <?php
-$sql_destaques = "SELECT * FROM produtos ORDER BY RAND() LIMIT 7";
+$sql_destaques = "SELECT * FROM produtos ORDER BY RAND() LIMIT 6";
 $resultado_destaques = mysqli_query($conexao, $sql_destaques);
 ?>
 <div class="container-produtos">

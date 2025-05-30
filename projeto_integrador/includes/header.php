@@ -79,7 +79,7 @@ session_start();
 
                 <!--Menu-->
                 <nav>
-                    <ul id="MenuItens">
+                    <ul class="nav-list">
                         <li><a href="index.php" title="">Início</a></li>
                         <li><a href="produtos.php" title="">Produtos</a></li>
                         <li><a href="#contato" title="">Contato</a></li>
@@ -94,7 +94,11 @@ session_start();
                     <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/carrinho-de_compras.png" alt="Carrinho" width="60px" height="60px">
                 </a>
 
-                <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/menu.png" alt="Menu Celular" class="menu-celular" onclick="menucelular()">
+                 <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
                 <?php if (isset($_SESSION['usuario_id'])): ?>
                     <div class="menu-usuario">
                         <img src="html/loja_dona_lurdes/projeto/arquivos-loja-v-1/img/logo_principal.png"  alt="Usuário" onclick="toggleMenuUsuario()">
