@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Cadastrar'])) {
         if (mysqli_query($conexao, $query)) {
             $_SESSION['usuario_id'] = mysqli_insert_id($conexao);
             $_SESSION['usuario_nome'] = $nome;
-            echo "<script>alert('Cadastro realizado com sucesso!'); window.location.href='$redirect';</script>";
+            echo "<script>alert('Cadastro realizado com sucesso!'); window.location.href='carrinho.php';</script>";
 
         } else {
             echo "<script>alert('Erro ao cadastrar.');</script>";

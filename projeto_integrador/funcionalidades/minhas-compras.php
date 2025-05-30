@@ -116,7 +116,7 @@ $resultado = mysqli_query($conexao, $sql);
                         <?php
                         $pedido_id = $pedido['id'];
                         $sql_produtos = "
-                            SELECT ip.produto_id, p.nome, ip.quantidade, ip.preço_unitario
+                            SELECT ip.produto_id, p.nome, ip.quantidade, ip.preco_unitario
                             FROM itens_pedido ip
                             JOIN produtos p ON ip.produto_id = p.id
                             WHERE ip.pedido_id = $pedido_id
@@ -126,7 +126,7 @@ $resultado = mysqli_query($conexao, $sql);
                         while ($item = mysqli_fetch_assoc($res_produtos)) {
                            echo '<li>
         <a href="../ver-produto.php?id=' . $item['produto_id'] . '" style="text-decoration: none; color: inherit;">
-            <strong>' . $item['nome'] . '</strong> - ' . $item['quantidade'] . 'x R$ ' . number_format($item['preço_unitario'], 2, ',', '.') . '
+            <strong>' . $item['nome'] . '</strong> - ' . $item['quantidade'] . 'x R$ ' . number_format($item['preco_unitario'], 2, ',', '.') . '
         </a>
       </li>';
                         }

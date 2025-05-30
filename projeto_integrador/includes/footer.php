@@ -31,7 +31,7 @@
                       <ul>
                         <li>Facebook</li>
                         <li><a href="https://www.instagram.com/armazem_sitio/">Instagram</a></li>
-                        <li>LinkedIn</li>
+                        <li><a href="https://maps.app.goo.gl/oqeaEzSPfq5ky8Nz9">Localização</a></li>
                       </ul>
 
                     </div>
