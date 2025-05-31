@@ -47,7 +47,7 @@ O banco de dados possui as seguintes tabelas principais:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/MariFernandes697/projeto_dona_lurdes.git)
 
 2. Copie os arquivos para a pasta htdocs do XAMPP.
 
